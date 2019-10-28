@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :mission do
-    user { User.first }
+    association :user
     title { Faker::Name.name }
   end
 end
