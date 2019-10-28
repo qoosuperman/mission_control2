@@ -1,3 +1,4 @@
+sudo: required
 addons:
   postgresql: "10"
   apt:
@@ -6,6 +7,7 @@ addons:
     - postgresql-client-10
     - google-chrome-stable
     - chromium-chromedriver
+  chrome: stable
 language: ruby
 rvm:
   - 2.6.3
