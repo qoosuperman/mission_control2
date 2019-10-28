@@ -5,8 +5,8 @@ addons:
     packages:
     - postgresql-10
     - postgresql-client-10
-    - google-chrome-stable
-    - chromium-chromedriver
+    # - google-chrome-stable
+    # - chromium-chromedriver
   chrome: stable
 language: ruby
 rvm:
@@ -15,6 +15,7 @@ before_install:
   - gem install rake
 before_script:
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+  - export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start && sleep 3
 services:
   - postgresql
 install:
