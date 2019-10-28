@@ -5,9 +5,7 @@ addons:
     - postgresql-10
     - postgresql-client-10
     - google-chrome-stable
-    # - chromium-chromedriver
-    sources:
-      - google-chrome
+    - chromium-chromedriver
 language: ruby
 rvm:
   - 2.6.3
