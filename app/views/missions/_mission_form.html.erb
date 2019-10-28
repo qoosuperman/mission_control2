@@ -1,0 +1,20 @@
+<%= form_for mission do |form| %>
+  <div>
+    <%= form.label :title, "任務名" %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :priority, "優先度" %>
+    <%= form.select :priority, priority_selection %>
+  </div>
+  <div>
+    <%= form.label :category, "種類" %>
+    <%= form.select :category, category_selection %>
+  </div>
+  <div>
+    <%= form.label :start_time, "起始時間" %>
+    <%= form.date_select :start_time %>
+    <%= form.time_select :start_time, :ignore_date => true %>
+  </div>
+  <%= form.submit "送出", data: { disable_with: false } %>
+<% end %>

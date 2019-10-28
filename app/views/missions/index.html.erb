@@ -1,0 +1,36 @@
+<h1>任務列表</h1>
+
+<%= link_to "新增任務", new_mission_path %>
+
+<table>
+  <thead>
+    <tr>
+      <td>任務名</td>
+      <td>狀態</td>
+      <td>起始時間</td>
+      <td>結束時間</td>
+      <td>優先度</td>
+      <td>種類</td>
+      <td>動作</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @missions.each do |mission| %>
+      <tr>
+        <td> <%= mission.title %> </td>
+        <td> <%= mission.status %> </td>
+        <td> <%= mission.start_time %> </td>
+        <td> <%= mission.end_time %> </td>
+        <td> <%= mission.priority %> </td>
+        <td> <%= mission.category %> </td>
+        <td>
+          <%= link_to "編輯", edit_mission_path(id: mission.id) %> 
+          <%= link_to "刪除", mission_path(id: mission.id), method: "delete", data: { confirm: "確定要刪除嗎?" } %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+
+
+</table>
