@@ -1,17 +1,17 @@
-<h1>任務列表</h1>
+<h1> <%= t("missions.mission_list") %> </h1>
 
-<%= link_to "新增任務", new_mission_path %>
+<%= link_to t("missions.add_mission"), new_mission_path %>
 
 <table>
   <thead>
     <tr>
-      <td>任務名</td>
-      <td>狀態</td>
-      <td>起始時間</td>
-      <td>結束時間</td>
-      <td>優先度</td>
-      <td>種類</td>
-      <td>動作</td>
+      <td> <%= t("missions.mission_name") %> </td>
+      <td> <%= t("missions.status") %> </td>
+      <td> <%= t("missions.start_time") %> </td>
+      <td> <%= t("missions.end_time") %> </td>
+      <td> <%= t("missions.priority") %> </td>
+      <td> <%= t("missions.category") %> </td>
+      <td> <%= t("missions.action") %> </td>
     </tr>
   </thead>
   <tbody>
@@ -24,8 +24,8 @@
         <td> <%= mission.priority %> </td>
         <td> <%= mission.category %> </td>
         <td>
-          <%= link_to "編輯", edit_mission_path(id: mission.id) %> 
-          <%= link_to "刪除", mission_path(id: mission.id), method: "delete", data: { confirm: "確定要刪除嗎?" } %> 
+          <%= link_to t("missions.edit"), edit_mission_path(id: mission.id) %> 
+          <%= link_to t("missions.delete"), mission_path(id: mission.id), method: "delete", data: { confirm: t("missions.confirm_delete") } %> 
         </td>
       </tr>
     <% end %>
