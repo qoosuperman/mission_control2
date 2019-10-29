@@ -7,6 +7,18 @@ RSpec.feature "Missions", type: :feature do
     create(:user)
   end
   
+  scenario "首頁任務照建立時間排序" do
+    create(:mission, title: "M1")
+    create(:mission, title: "M2")
+    visit root_path
+    within 'tbody tr:nth-child(1)' do
+      expect(page).to have_content("M2")
+    end
+    within 'tbody tr:nth-child(2)' do
+      expect(page).to have_content("M1")
+    end
+  end
+
   scenario "可以新增任務" do
     visit root_path
     click_link "新增任務"
@@ -25,6 +37,7 @@ RSpec.feature "Missions", type: :feature do
     expect(page).to have_content("M2")
     expect(last_mission.title).to eq "M2"
   end
+  
 
   scenario "可以刪除任務", js: true do
     create(:mission, title: "M1")
