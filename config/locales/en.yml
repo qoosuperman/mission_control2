@@ -222,7 +222,7 @@ en:
     end_time: "End Time"
     priority: "Priority"
     category: "Category"
-    aciont: "Action"
+    action: "Action"
     edit: "Edit"
     delete: "Delete"
     confirm_delete: "Sure to delete?"
