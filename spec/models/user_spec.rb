@@ -1,17 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context "使用者必須有名字" do
+  describe "使用者必須有名字" do
+    context "when 做出有名字的 user 是有效的" do
+      let(:build_user) { build(:user) }
 
-    it "做出有名字的 user 是有效的" do
-      u1 = build(:user)
-      expect(u1.valid?).to be true
+      specify { expect(build_user).to be_valid }
     end
 
-    it "做出沒名字的 user 是無效的" do
-      u1 = build(:user, name: nil)
-      expect(u1.valid?).to be false
+    context "when 做出沒名字的 user 是無效的" do
+      let(:build_user) { build(:user, name: nil) }
+
+      specify { expect(build_user).not_to be_valid }
     end
   end
-
 end
