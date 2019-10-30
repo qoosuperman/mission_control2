@@ -10,3 +10,11 @@
   - status: string
   - priority: integer
   - category: integer
+
+## heroku deploy
+```bash
+$ heroku git:remote -a mission-control-5xruby
+$ git push heroku master
+$ heroku run bundle
+$ heroku run rails db:migrate
+```

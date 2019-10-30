@@ -1,4 +1,9 @@
 <%= form_for mission do |form| %>
+  <% if mission.errors.any? %>
+    <% mission.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
   <div>
     <%= form.label :title, t("missions.mission_name") %>
     <%= form.text_field :title %>

@@ -3,7 +3,7 @@ class MissionsController < ApplicationController
 
   def index
     #之後會用分頁處理，目前先用 all 跑出全部資料
-    @missions = Mission.all
+    @missions = Mission.order('created_at desc')
   end
 
   def new
