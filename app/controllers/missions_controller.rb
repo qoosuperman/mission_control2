@@ -3,7 +3,12 @@ class MissionsController < ApplicationController
 
   def index
     #之後會用分頁處理，目前先用 all 跑出全部資料
-    @missions = Mission.order('created_at desc')
+    if params[:order_by]
+      @missions = Mission.order("#{params[:order_by]} desc")
+    else
+      @missions = Mission.order('created_at desc')
+    end
+    
   end
 
   def new
@@ -46,6 +51,6 @@ class MissionsController < ApplicationController
     @mission = Mission.find_by(id: params[:id])
   end
   def mission_params
-    params.require(:mission).permit(:title, :priority, :category, :start_time)
+    params.require(:mission).permit(:title, :priority, :category, :start_time, :end_time)
   end
 end
