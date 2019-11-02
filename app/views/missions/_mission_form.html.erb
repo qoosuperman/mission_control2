@@ -21,5 +21,10 @@
     <%= form.date_select :start_time %>
     <%= form.time_select :start_time, :ignore_date => true %>
   </div>
+  <div>
+    <%= form.label :end_time, t("missions.end_time") %>
+    <%= form.date_select :end_time %>
+    <%= form.time_select :end_time, :ignore_date => true %>
+  </div>
   <%= form.submit t("missions.submit"), data: { disable_with: false } %>
 <% end %>

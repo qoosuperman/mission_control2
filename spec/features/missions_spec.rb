@@ -7,7 +7,7 @@ RSpec.feature "Missions", type: :feature do
     create(:user)
   end
   
-  scenario "首頁任務照建立時間排序" do
+  scenario "when default，首頁任務照建立時間排序" do
     create(:mission, title: "M1")
     create(:mission, title: "M2")
     visit root_path
@@ -16,6 +16,24 @@ RSpec.feature "Missions", type: :feature do
     end
     within 'tbody tr:nth-child(2)' do
       expect(page).to have_content("M1")
+    end
+  end
+
+  context "when 按下結束時間連結，首頁可以照結束時間排序" do
+    before do
+      create(:mission, title: "M1", end_time: DateTime.new(2019, 10, 31, 12, 34, 56))
+      create(:mission, title: "M2", end_time: DateTime.new(2019, 10, 29, 12, 34, 56))
+    end
+
+    scenario  do
+      visit root_path
+      click_link "結束時間"
+      within 'tbody tr:nth-child(1)' do
+        expect(page).to have_content("M1")
+      end
+      within 'tbody tr:nth-child(2)' do
+        expect(page).to have_content("M2")
+      end
     end
   end
 

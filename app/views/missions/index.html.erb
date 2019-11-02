@@ -7,8 +7,8 @@
     <tr>
       <td> <%= t("missions.mission_name") %> </td>
       <td> <%= t("missions.status") %> </td>
-      <td> <%= t("missions.start_time") %> </td>
-      <td> <%= t("missions.end_time") %> </td>
+      <td> <%= link_to t("missions.start_time"), { url: nil , order_by: "created_at"} %> </td>
+      <td> <%= link_to t("missions.end_time"), { url: nil , order_by: "end_time"} %> </td>
       <td> <%= t("missions.priority") %> </td>
       <td> <%= t("missions.category") %> </td>
       <td> <%= t("missions.action") %> </td>
