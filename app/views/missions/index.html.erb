@@ -1,3 +1,14 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :title_cont %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.label :status_cont %>
+  <%= f.search_field :status_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+
 <h1> <%= t("missions.mission_list") %> </h1>
 
 <%= link_to t("missions.add_mission"), new_mission_path %>

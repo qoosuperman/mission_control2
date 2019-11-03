@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'travis'
 gem 'rails-i18n', '~> 5.1'
 gem 'aasm', '~> 5.0', '>= 5.0.6'
+gem 'ransack', '~> 2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
