@@ -37,6 +37,26 @@ RSpec.feature "Missions", type: :feature do
     end
   end
 
+  context "when 按下查詢可以得到符合條件的任務" do
+    before do
+      create(:mission, title: "M1")
+      create(:mission, title: "M2")
+      create(:mission, title: "G3", status: "handling")
+      create(:mission, title: "M4", status: "complete")
+    end
+
+    scenario  do
+      visit root_path
+      fill_in "q_title_cont", with: "M"
+      fill_in "q_status_cont", with: "pen"
+      click_button "搜尋"
+      expect(page).to have_content("M2")
+      expect(page).to have_content("M1")
+      expect(page).not_to have_content("G3")
+      expect(page).not_to have_content("M4")
+    end
+  end
+
   scenario "可以新增任務" do
     visit root_path
     click_link "新增任務"
@@ -65,4 +85,5 @@ RSpec.feature "Missions", type: :feature do
     expect(page).not_to have_content("M1")
     expect(Mission.count).to be(0)
   end
+  
 end
