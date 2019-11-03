@@ -18,7 +18,7 @@
     <% @missions.each do |mission| %>
       <tr>
         <td> <%= mission.title %> </td>
-        <td> <%= mission.status %> </td>
+        <td> <%= mission_status(mission) %> </td>
         <td> <%= mission.start_time %> </td>
         <td> <%= mission.end_time %> </td>
         <td> <%= mission_enum_name(mission, :priority) %> </td>
