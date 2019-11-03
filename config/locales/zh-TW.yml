@@ -13,9 +13,11 @@ zh-TW:
           urgent: "緊急"
           common: "一般"
           low: "不重要"
+          other: ""
         category:
           company: "公事"
           home: "私事"
+          other: ""
         aasm_state:
           pending: "待處理"
           handling: "進行中"
