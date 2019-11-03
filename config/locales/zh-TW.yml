@@ -7,6 +7,15 @@ zh-TW:
         restrict_dependent_destroy:
           has_one: 由於 %{record} 需要此記錄，所以無法移除記錄
           has_many: 由於 %{record} 需要此記錄，所以無法移除記錄
+    attributes:
+      mission:
+        priority:
+          urgent: "緊急"
+          common: "一般"
+          low: "不重要"
+        category:
+          company: "公事"
+          home: "私事"
   date:
     abbr_day_names:
     - 周日

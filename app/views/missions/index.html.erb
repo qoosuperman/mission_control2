@@ -21,8 +21,8 @@
         <td> <%= mission.status %> </td>
         <td> <%= mission.start_time %> </td>
         <td> <%= mission.end_time %> </td>
-        <td> <%= mission.priority %> </td>
-        <td> <%= mission.category %> </td>
+        <td> <%= mission_enum_name(mission, :priority) %> </td>
+        <td> <%= mission_enum_name(mission, :category)  %> </td>
         <td>
           <%= link_to t("missions.edit"), edit_mission_path(id: mission.id) %> 
           <%= link_to t("missions.delete"), mission_path(id: mission.id), method: "delete", data: { confirm: t("missions.confirm_delete") } %> 
