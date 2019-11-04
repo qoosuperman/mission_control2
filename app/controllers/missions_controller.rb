@@ -1,11 +1,10 @@
 class MissionsController < ApplicationController
-  # before_action :validate_search_key, only: [:index]
   before_action :find_mission, only: [:edit, :update, :destroy]
 
   def index
     #之後會用分頁處理，目前先用 all 跑出全部資料
     @q = Mission.ransack(params[:q])
-    @missions = @q.result.order("#{order_params} desc") || Mission.order("#{order_params} desc")
+    @missions = Mission.query(params[:q]).order("#{order_params} desc")
   end
 
   def new

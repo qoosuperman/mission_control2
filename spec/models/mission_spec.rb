@@ -36,4 +36,30 @@ RSpec.describe Mission, type: :model do
       specify { expect(build_mission).not_to be_valid }
     end
   end
+
+  describe "可以使用搜尋功能" do
+    before do
+      create(:mission, title: "M1", status: "pending")
+      create(:mission, title: "M2", status: "handling")
+      create(:mission, title: "G2", status: "pending")
+    end
+
+    context "when 搜尋標題 M 的任務只會有 M1 / M2 兩個任務" do
+      params = {"title_cont"=>"M", "status_cont"=>""}
+
+      specify { expect(Mission.query(params).count).to be 2 }
+    end
+
+    context "when 搜尋狀態 pending 的任務只會有 M2 / G2 兩個任務" do
+      params = {"title_cont"=>"", "status_cont"=>"pending"}
+
+      specify { expect(Mission.query(params).count).to be 2 }
+    end
+
+    context "when 搜尋標題 M + 狀態 pending 的任務只會有 M1" do
+      params = {"title_cont"=>"M", "status_cont"=>"pending"}
+
+      specify { expect(Mission.query(params).first.title).to eq "M1" }
+    end
+  end
 end
