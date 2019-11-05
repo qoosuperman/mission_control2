@@ -38,6 +38,8 @@ RSpec.describe Mission, type: :model do
   end
 
   describe "可以使用搜尋功能" do
+    
+
     before do
       create(:mission, title: "M1", status: "pending")
       create(:mission, title: "M2", status: "handling")
@@ -46,20 +48,23 @@ RSpec.describe Mission, type: :model do
 
     context "when 搜尋標題 M 的任務只會有 M1 / M2 兩個任務" do
       params = {"title_cont"=>"M", "status_cont"=>""}
+      let(:query_result) { Mission.ransack(params).result }
 
-      specify { expect(Mission.query(params).count).to be 2 }
+      specify { expect(query_result.map(&:title)).to eq ["M1", "M2"] }
     end
 
     context "when 搜尋狀態 pending 的任務只會有 M2 / G2 兩個任務" do
       params = {"title_cont"=>"", "status_cont"=>"pending"}
+      let(:query_result) { Mission.ransack(params).result }
 
-      specify { expect(Mission.query(params).count).to be 2 }
+      specify { expect(query_result.map(&:title)).to eq ["M1", "G2"] }
     end
 
     context "when 搜尋標題 M + 狀態 pending 的任務只會有 M1" do
       params = {"title_cont"=>"M", "status_cont"=>"pending"}
+      let(:query_result) { Mission.ransack(params).result }
 
-      specify { expect(Mission.query(params).first.title).to eq "M1" }
+      specify { expect(query_result.map(&:title)).to eq ["M1"] }
     end
   end
 end

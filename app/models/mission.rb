@@ -2,8 +2,6 @@ class Mission < ApplicationRecord
   include AASM
   belongs_to :user
 
-  scope :query, ->(query_param){ ransack(query_param).result }
-
   enum priority: [ :urgent, :common, :low ]
   enum category: [ :company, :home ]
 
