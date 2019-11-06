@@ -37,6 +37,28 @@ RSpec.feature "Missions", type: :feature do
     end
   end
 
+  context "when 按下優先度連結，首頁可以照優先度排序" do
+    before do
+      create(:mission, title: "M1", priority: "urgent")
+      create(:mission, title: "M2", priority: "low" )
+      create(:mission, title: "M3", priority: "common")
+    end
+
+    scenario  do
+      visit root_path
+      click_link "優先度"
+      within 'tbody tr:nth-child(1)' do
+        expect(page).to have_content("M2")
+      end
+      within 'tbody tr:nth-child(2)' do
+        expect(page).to have_content("M3")
+      end
+      within 'tbody tr:nth-child(3)' do
+        expect(page).to have_content("M1")
+      end
+    end
+  end
+
   context "when 按下查詢可以得到符合條件的任務" do
     before do
       create(:mission, title: "M1")

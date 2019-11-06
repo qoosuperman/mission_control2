@@ -2,9 +2,8 @@ class MissionsController < ApplicationController
   before_action :find_mission, only: [:edit, :update, :destroy]
 
   def index
-    #之後會用分頁處理，目前先用 all 跑出全部資料
     @q = Mission.ransack(params[:q])
-    @missions = @q.result.order("#{order_params} desc")
+    @missions = @q.result.order("#{order_params} desc").page(params[:page])
   end
 
   def new
@@ -52,7 +51,7 @@ class MissionsController < ApplicationController
   end
 
   def order_params
-    whitelist = %w[created_at end_time]
+    whitelist = %w[created_at end_time priority]
     if params[:order_by].in?(whitelist)
       params[:order_by]
     else
