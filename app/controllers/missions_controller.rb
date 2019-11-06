@@ -3,7 +3,8 @@ class MissionsController < ApplicationController
 
   def index
     #之後會用分頁處理，目前先用 all 跑出全部資料
-    @missions = Mission.order("#{order_params} desc")
+    @q = Mission.ransack(params[:q])
+    @missions = @q.result.order("#{order_params} desc")
   end
 
   def new

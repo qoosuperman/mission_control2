@@ -1,3 +1,14 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :title_cont %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.label :status_cont %>
+  <%= f.search_field :status_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+
 <h1> <%= t("missions.mission_list") %> </h1>
 
 <%= link_to t("missions.add_mission"), new_mission_path %>
@@ -18,11 +29,11 @@
     <% @missions.each do |mission| %>
       <tr>
         <td> <%= mission.title %> </td>
-        <td> <%= mission.status %> </td>
+        <td> <%= mission_status(mission) %> </td>
         <td> <%= mission.start_time %> </td>
         <td> <%= mission.end_time %> </td>
-        <td> <%= mission.priority %> </td>
-        <td> <%= mission.category %> </td>
+        <td> <%= mission_enum_name(mission, :priority) %> </td>
+        <td> <%= mission_enum_name(mission, :category)  %> </td>
         <td>
           <%= link_to t("missions.edit"), edit_mission_path(id: mission.id) %> 
           <%= link_to t("missions.delete"), mission_path(id: mission.id), method: "delete", data: { confirm: t("missions.confirm_delete") } %> 

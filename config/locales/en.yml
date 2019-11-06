@@ -7,6 +7,19 @@ en:
         restrict_dependent_destroy:
           has_one: Cannot delete record because a dependent %{record} exists
           has_many: Cannot delete record because dependent %{record} exist
+    attributes:
+      mission:
+        priority:
+          urgent: "Urgent"
+          common: "Common"
+          low: "Low"
+        category:
+          company: "Company"
+          home: "Home"
+        aasm_state:
+          pending: "Pending"
+          handling: "Handling"
+          complete: "Complete"
   date:
     abbr_day_names:
     - Sun
