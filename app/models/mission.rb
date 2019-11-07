@@ -1,4 +1,6 @@
 class Mission < ApplicationRecord
+  paginates_per 25
+
   include AASM
   belongs_to :user
 

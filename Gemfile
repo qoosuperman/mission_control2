@@ -39,6 +39,7 @@ gem 'travis'
 gem 'rails-i18n', '~> 5.1'
 gem 'aasm', '~> 5.0', '>= 5.0.6'
 gem 'ransack', '~> 2.3'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.9'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   gem 'faker', '~> 2.6'
+  gem 'hirb-unicode', '~> 0.0.5'
 end
 
 group :development do
