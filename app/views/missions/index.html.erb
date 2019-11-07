@@ -4,8 +4,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <%= search_form_for @q do |f| %>
+      <%= search_form_for @q, html: { class: "form-inline my-2 my-lg-0"} do |f| %>
         <%= f.label :title_cont, "標題" %>
         <%= f.search_field :title_cont, class: "form-control mr-sm-2" %>
 
@@ -14,7 +13,6 @@
 
         <%= f.submit "搜尋", class: "btn btn-outline-success my-2 my-sm-0" %>
       <% end %>
-    </form>
   </div>
 </nav>
 
