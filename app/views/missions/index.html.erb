@@ -1,19 +1,33 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label :title_cont %>
-  <%= f.search_field :title_cont %>
-
-  <%= f.label :status_cont %>
-  <%= f.search_field :status_cont %>
-
-  <%= f.submit %>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 
-<h1> <%= t("missions.mission_list") %> </h1>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <%= search_form_for @q do |f| %>
+        <%= f.label :title_cont, "標題" %>
+        <%= f.search_field :title_cont, class: "form-control mr-sm-2" %>
 
-<%= link_to t("missions.add_mission"), new_mission_path %>
+        <%= f.label :status_cont, "狀態" %>
+        <%= f.search_field :status_cont, class: "form-control mr-sm-2" %>
 
-<table>
+        <%= f.submit "搜尋", class: "btn btn-outline-success my-2 my-sm-0" %>
+      <% end %>
+    </form>
+  </div>
+</nav>
+
+
+
+
+<h1 class="text-center"> <%= t("missions.mission_list") %> </h1>
+
+<div class="text-center p-3">
+  <%= link_to t("missions.add_mission"), new_mission_path, class: "btn btn-success" %>
+</div>
+
+<table class="table">
   <thead>
     <tr>
       <td> <%= t("missions.mission_name") %> </td>
@@ -35,12 +49,12 @@
         <td> <%= mission_enum_name(mission, :priority) %> </td>
         <td> <%= mission_enum_name(mission, :category)  %> </td>
         <td>
-          <%= link_to t("missions.edit"), edit_mission_path(id: mission.id) %> 
-          <%= link_to t("missions.delete"), mission_path(id: mission.id), method: "delete", data: { confirm: t("missions.confirm_delete") } %> 
+          <%= link_to t("missions.edit"), edit_mission_path(id: mission.id), class: "btn btn-success" %> 
+          <%= link_to t("missions.delete"), mission_path(id: mission.id), method: "delete", data: { confirm: t("missions.confirm_delete") }, class: "btn btn-danger" %> 
         </td>
       </tr>
     <% end %>
-    <%= paginate(@missions) %>
+    <%= paginate(@missions, theme: 'twitter-bootstrap-4') %>
   </tbody>
 
 
