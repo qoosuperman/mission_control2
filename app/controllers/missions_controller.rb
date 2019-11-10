@@ -1,5 +1,6 @@
 class MissionsController < ApplicationController
   before_action :find_mission, only: [:edit, :update, :destroy]
+  before_action :check_login
 
   def index
     @q = Mission.ransack(params[:q])
@@ -57,5 +58,11 @@ class MissionsController < ApplicationController
     else
       "created_at"
     end 
+  end
+
+  def check_login
+    if signed_in? == false
+      redirect_to signin_path
+    end
   end
 end
