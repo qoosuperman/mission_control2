@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe "when email 格式正確是有效的" do 
+    context "when email 格式正確是有效的" do 
       let(:build_user) { build(:user) }
       let(:addresses) { %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn] }
 
@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
       end
     end 
 
-    describe "when email 重複的話無效" do
+    context "when email 重複的話無效" do
       let(:user) { create(:user) }
 
       it do
@@ -69,7 +69,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe "when email 大小寫不同還是不能重複" do
+    context "when email 大小寫不同還是不能重複" do
       let(:user) { create(:user) }
 
       it do
@@ -77,6 +77,28 @@ RSpec.describe User, type: :model do
         user_with_same_email.email = user.email.upcase
         expect(user_with_same_email).not_to be_valid
       end
+    end
+  end
+
+  describe "使用者的密碼驗證" do
+    let(:build_user) { build(:user) }
+
+    context "when 使用者沒有密碼" do
+      before { build_user.password = build_user.password_confirmation = " " }
+      
+      specify { expect(build_user).not_to be_valid }
+    end
+
+    context "when password_confirm 不等於 password" do 
+      before { build_user.password_confirmation = "mismatch" } 
+
+      specify { expect(build_user).not_to be_valid }
+    end
+
+    context "when 沒有給 password_confirm" do 
+      before { build_user.password_confirmation = nil } 
+
+      specify { expect(build_user).not_to be_valid }
     end
   end
 end
