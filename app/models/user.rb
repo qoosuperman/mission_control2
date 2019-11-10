@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token 
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -12,4 +13,8 @@ class User < ApplicationRecord
 
    # This line for peventing mass assignment
   # attr_accessor :name, :email
+  private
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
+  end
 end
