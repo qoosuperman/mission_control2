@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :missions
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :email, presence: true
   # This line for peventing mass assignment
-  attr accessible :name, :email
+  attr_accessor :name, :email
 end
