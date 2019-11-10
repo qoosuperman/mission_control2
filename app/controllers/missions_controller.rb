@@ -4,7 +4,7 @@ class MissionsController < ApplicationController
 
   def index
     @q = Mission.ransack(params[:q])
-    @missions = @q.result.order("#{order_params} desc").page(params[:page])
+    @missions = @q.result.where(user_id: current_user.id).order("#{order_params} desc").page(params[:page])
   end
 
   def new
@@ -12,9 +12,7 @@ class MissionsController < ApplicationController
   end
 
   def create
-    @mission = Mission.new(mission_params)
-    #因為還沒建後台，先建一個 user 把 mission 都丟給他
-    @mission.user = User.first
+    @mission = current_user.missions.build(mission_params)
     if @mission.save
       redirect_to root_path, notice: "新增任務成功！"
     else
@@ -48,7 +46,7 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:title, :priority, :category, :start_time, :end_time)
+    params.require(:mission).permit(:title, :priority, :category, :start_time, :end_time, :user_id)
   end
 
   def order_params
