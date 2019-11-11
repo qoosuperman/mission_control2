@@ -1,4 +1,4 @@
-<h1>註冊</h1>
+<h1> <%= t("user.sign_up") %> </h1>
 
 <div>
   <%= form_for @user do |f| %>
@@ -16,6 +16,6 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
 
-    <%= f.submit "確定送出" %>
+    <%= f.submit t("missions.submit") %>
   <% end %>
 </div>

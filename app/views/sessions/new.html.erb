@@ -1,4 +1,4 @@
-<h1>登入</h1>
+<h1><%= t("user.log_in") %></h1>
 
 <div class="row">
   <%= form_for(:session, url: sessions_path) do |f| %> 
@@ -8,8 +8,8 @@
     <%= f.label :password %>
     <%= f.password_field :password %>
 
-    <%= f.submit "登入", class: "btn btn-large btn-primary" %>
+    <%= f.submit t("user.log_in"), class: "btn btn-large btn-primary" %>
   <% end %>
 
-  <p>還沒註冊？ <%= link_to "註冊", signup_path %></p> 
+  <p><%= t("user.not_signup?") %> <%= link_to t("user.sign_up"), signup_path %></p> 
 </div>

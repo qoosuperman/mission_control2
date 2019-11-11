@@ -247,3 +247,18 @@ en:
     low: "Low"
     public: "Public"
     home: "Home"
+    title: "Title"
+    search: "Search"
+  notice:
+    create_mission_success: "Create Mission Successfully!"
+    update_success: "Update Successfully!"
+    delete_success: "Delete Successfully!"
+    delete_fail: "Can't delete"
+  user:
+    personal_info: "Peronsal Info"
+    log_out: "Log Out"
+    log_in: "Sign in"
+    not_signup?: "Still no sign up？"
+    sign_up: "Sign up"
+    name: "Name"
+    email: "Email"

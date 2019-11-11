@@ -14,7 +14,7 @@ class MissionsController < ApplicationController
   def create
     @mission = current_user.missions.build(mission_params)
     if @mission.save
-      redirect_to root_path, notice: "新增任務成功！"
+      redirect_to root_path, notice: t("notice.create_mission_success")
     else
       render :new
     end
@@ -25,7 +25,7 @@ class MissionsController < ApplicationController
 
   def update
     if @mission.update(mission_params)
-      redirect_to root_path, notice: "更新成功"
+      redirect_to root_path, notice: t("notice.update_success")
     else
       render :edit
     end
@@ -33,9 +33,9 @@ class MissionsController < ApplicationController
 
   def destroy
     if @mission.destroy
-      redirect_to root_path, notice: "刪除成功"
+      redirect_to root_path, notice: t("notice.delete_success")
     else
-      redirect_to root_path, notice: "刪除失敗"
+      redirect_to root_path, notice: t("notice.delete_fail")
     end
   end
 

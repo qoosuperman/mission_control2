@@ -247,3 +247,18 @@ zh-TW:
     low: "沒很重要"
     public: "公事"
     home: "私事"
+    title: "標題"
+    search: "搜尋"
+  notice:
+    create_mission_success: "Create Mission Successfully!"
+    update_success: "Update Successfully!"
+    delete_success: "Delete Successfully!"
+    delete_fail: "Can't delete"
+  user:
+    personal_info: "個人資料"
+    log_out: "登出"
+    log_in: "登入"
+    not_signup?: "還沒註冊？"
+    sign_up: "註冊"
+    name: "名字"
+    email: "信箱"
