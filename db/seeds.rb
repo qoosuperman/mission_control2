@@ -8,9 +8,9 @@
 u1 = User.create(name: "QOO1", email: "qqq@gmail.com", password: "123456", password_confirmation: "123456")
 u2 = User.create(name: "QOO2", email: "www@gmail.com", password: "123456", password_confirmation: "123456")
 
-FactoryBot.create(:mission, title: "q1_1", user_id: User.first.id)
-FactoryBot.create(:mission, title: "q1_2", user_id: User.first.id)
+FactoryBot.create(:mission, title: "q1_1", user_id: u1.id)
+FactoryBot.create(:mission, title: "q1_2", user_id: u1.id)
 
-FactoryBot.create(:mission, title: "q2_1", user_id: User.second.id)
-FactoryBot.create(:mission, title: "q2_2", user_id: User.second.id)
-FactoryBot.create(:mission, title: "q2_3", user_id: User.second.id)
+FactoryBot.create(:mission, title: "q2_1", user_id: u2.id)
+FactoryBot.create(:mission, title: "q2_2", user_id: u2.id)
+FactoryBot.create(:mission, title: "q2_3", user_id: u2.id)

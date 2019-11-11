@@ -59,8 +59,6 @@ class MissionsController < ApplicationController
   end
 
   def check_login
-    if signed_in? == false
-      redirect_to signin_path
-    end
+    redirect_to signin_path unless signed_in?
   end
 end
