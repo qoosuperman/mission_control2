@@ -1,4 +1,4 @@
-class ApllicationController
+module MyDevise
   module Logable
     extend ActiveSupport::Concern
     # included do  
