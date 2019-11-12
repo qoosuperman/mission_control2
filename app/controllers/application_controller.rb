@@ -1,3 +1,5 @@
+require 'active_support/concern'
+
 class ApplicationController < ActionController::Base
   include MyDevise::Logable
 
