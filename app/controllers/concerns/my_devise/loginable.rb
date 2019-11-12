@@ -1,5 +1,5 @@
 module MyDevise
-  module Logable
+  module Loginable
     extend ActiveSupport::Concern
     # included do  
     # end
