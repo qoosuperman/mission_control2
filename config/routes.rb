@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :missions
-  resources :users, only: [:index, :new, :create, :show]
+  resources :users, only: [:index, :new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   root "missions#index"
 

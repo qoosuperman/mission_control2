@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:edit, :update, :show]
+
   def index
     # 晚點需要用分頁處理
     @users = User.all
-  end
-
-  def new_by_admin
-    @user = User.new
   end
 
   def new
@@ -13,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(clean_params)
+    @user = User.new(user_params)
     if @user.save
       sign_in @user
       redirect_to root_path
@@ -22,12 +20,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to admin_path, notice: t("notice.update_success")
+    else
+      render :edit
+    end
+  end
+
   def show
-    @user = User.find(params[:id])
   end
 
   private
-  def clean_params
+  def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end

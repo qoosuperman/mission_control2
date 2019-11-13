@@ -1,5 +1,5 @@
 <h1><%= t("user.user_list") %></h1>
-
+<%= link_to t("user.create_user"), signup_path, class: "btn btn-success" %>
 <table class="table">
   <thead>
     <tr>
@@ -18,7 +18,7 @@
         <td>角色  </td>
         <td> <%= user.missions.count %>  </td>
         <td>
-          <%= link_to t("missions.edit"), "#", class: "btn btn-success" %> 
+          <%= link_to t("missions.edit"), edit_user_path(id: user.id), class: "btn btn-success" %> 
           <%= link_to t("missions.delete"), "#", method: "delete", data: { confirm: t("missions.confirm_delete") }, class: "btn btn-danger" %> 
         </td>
       </tr>
