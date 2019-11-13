@@ -1,6 +1,6 @@
-<h1>任務列表</h1>
+<h1> <%= t("missions.mission_list") %> </h1>
 
-使用者： <%= @user.name %>
+<%= t("user.user") %>： <%= @user.name %>
 
 <div>
   <%= link_to "回到後台環境", admin_path, class: "btn btn-success" %>
