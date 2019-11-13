@@ -1,4 +1,18 @@
 <h1> <%= t("user.edit_user") %> </h1>
 
-<%= render "user_form", user: @user %>
+<div>
+  <%= form_for @user do |f| %>
+    <%= render 'shared/error_messages' %>
 
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :role %>
+    <%= f.select(:role, ["admin", "user"]) %>
+
+    <%= f.submit t("missions.submit") %>
+  <% end %>
+</div>

@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.skip_password_validation = true
     if @user.update(user_params)
       redirect_to admin_path, notice: t("notice.update_success")
     else
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
   end
 
   def find_user

@@ -271,3 +271,4 @@ zh-TW:
     user_control: "使用者管理"
     back_to_missions: "回到任務列表"
     role_must_be_admin: "權限是 admin 才能管理使用者！"
+    admin_only_one: "admin只剩一人不能刪除"

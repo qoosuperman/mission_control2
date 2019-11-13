@@ -16,7 +16,7 @@
       <tr>
         <td> <%= user.name %> </td>
         <td> <%= user.email %> </td>
-        <td>角色  </td>
+        <td> <%= user.role %> </td>
         <td> <%= link_to user.missions.count, mission_user_path(id: user.id) %>  </td>
         <td>
           <%= link_to t("missions.edit"), edit_user_path(id: user.id), class: "btn btn-success" %> 
