@@ -1,0 +1,32 @@
+<h1>任務列表</h1>
+
+使用者： <%= @user.name %>
+
+<div>
+  <%= link_to "回到後台環境", admin_path, class: "btn btn-success" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td> <%= t("missions.mission_name") %> </td>
+      <td> <%= t("missions.status") %> </td>
+      <td> <%= t("missions.start_time") %> </td>
+      <td> <%= t("missions.end_time") %> </td>
+      <td> <%= t("missions.priority") %> </td>
+      <td> <%= t("missions.category") %> </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @missions.each do |mission| %>
+      <tr>
+        <td> <%= mission.title %> </td>
+        <td> <%= mission_status(mission) %> </td>
+        <td> <%= mission.start_time %> </td>
+        <td> <%= mission.end_time %> </td>
+        <td> <%= mission_enum_name(mission, :priority) %> </td>
+        <td> <%= mission_enum_name(mission, :category)  %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
