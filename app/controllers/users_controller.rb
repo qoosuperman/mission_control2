@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  def index
+    # 晚點需要用分頁處理
+    @users = User.all
+  end
+
+  def new_by_admin
+    @user = User.new
+  end
+
   def new
     @user = User.new
   end

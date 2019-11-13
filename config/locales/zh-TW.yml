@@ -262,3 +262,7 @@ zh-TW:
     sign_up: "註冊"
     name: "名字"
     email: "信箱"
+    role: "角色"
+    mission_count: "任務數量"
+    create_user: "新增使用者"
+    user_list: "使用者列表"

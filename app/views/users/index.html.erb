@@ -1,0 +1,30 @@
+<h1><%= t("user.user_list") %></h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td> <%= t("user.name") %> </td>
+      <td> <%= t("user.email") %> </td>
+      <td> <%= t("user.role") %> </td>
+      <td> <%= t("user.mission_count") %> </td>
+      <td> <%= t("missions.action") %> </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td> <%= user.name %> </td>
+        <td> <%= user.email %> </td>
+        <td>角色  </td>
+        <td> <%= user.missions.count %>  </td>
+        <td>
+          <%= link_to t("missions.edit"), "#", class: "btn btn-success" %> 
+          <%= link_to t("missions.delete"), "#", method: "delete", data: { confirm: t("missions.confirm_delete") }, class: "btn btn-danger" %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+
+
+</table>
