@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :missions
+  has_many :missions, :dependent => :delete_all
   has_secure_password
 
   before_save { |user| user.email = email.downcase }

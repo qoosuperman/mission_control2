@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:edit, :update, :show]
+  before_action :find_user, only: [:edit, :update, :show, :destroy]
 
   def index
     # 晚點需要用分頁處理
@@ -32,6 +32,14 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @user.destroy
+      redirect_to admin_path, notice: t("notice.delete_success")
+    else
+      redirect_to admin_path, notice: t("notice.delete_fail")
+    end
   end
 
   private
