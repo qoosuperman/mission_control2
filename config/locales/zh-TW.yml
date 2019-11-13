@@ -268,3 +268,6 @@ zh-TW:
     user_list: "使用者列表"
     edit_user: "編輯使用者"
     user: "使用者"
+    user_control: "使用者管理"
+    back_to_missions: "回到任務列表"
+    role_must_be_admin: "權限是 admin 才能管理使用者！"

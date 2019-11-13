@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_admin, only: [:index, :edit, :update, :destroy]
   before_action :find_user, only: [:edit, :update, :show, :destroy, :mission]
 
   def index
@@ -53,5 +54,9 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def check_admin
+    (redirect_to root_path, notice: t("user.role_must_be_admin")) unless current_user.role == "admin"
   end
 end
