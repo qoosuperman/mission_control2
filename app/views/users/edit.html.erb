@@ -11,7 +11,7 @@
     <%= f.text_field :email %>
 
     <%= f.label :role %>
-    <%= f.select(:role, ["admin", "user"]) %>
+    <%= f.select(:role, User.roles.values) %>
 
     <%= f.submit t("missions.submit") %>
   <% end %>

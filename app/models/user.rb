@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :missions, :dependent => :delete_all
   has_secure_password
 
+  enum role: { admin: 'admin', user: 'user' }
+
   attr_accessor :skip_password_validation
 
   before_save { |user| user.email = email.downcase }
@@ -23,7 +25,7 @@ class User < ApplicationRecord
 
   def check_last_admin
     if User.where(role: "admin").count == 1
-      errors[:base] << "admin只剩一人不能刪除"
+      errors[:base] << I18n.t("user.admin_only_one")
       throw :abort
     end
   end

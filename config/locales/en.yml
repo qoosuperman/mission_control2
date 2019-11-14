@@ -272,3 +272,4 @@ en:
     back_to_missions: "Back to Mission List"
     role_must_be_admin: "You can only control user if you're admin"
     admin_only_one: "You can't delete if admin only 1 left"
+    back_to_admin: "Back to Admin"
