@@ -3,6 +3,7 @@ class Mission < ApplicationRecord
 
   include AASM
   belongs_to :user
+  has_many :tags
 
   enum priority: [ :urgent, :common, :low ]
   enum category: [ :company, :home ]
