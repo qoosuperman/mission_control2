@@ -1,7 +1,7 @@
 <div class="nested-fields row">
   <div class="col-10">
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "標籤名字" %>
+    <%= f.text_field :name, placeholder: t("missions.tag_name") %>
   </div>
   <div class="col-2">
     <%= link_to_remove_association "X", f , class: "btn btn-delete"%>

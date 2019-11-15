@@ -251,6 +251,7 @@ zh-TW:
     search: "搜尋"
     create_tag: "新增標籤"
     tag: "標籤"
+    tag_name: "標籤名字"
   notice:
     create_mission_success: "Create Mission Successfully!"
     update_success: "Update Successfully!"

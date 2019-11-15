@@ -249,6 +249,7 @@ en:
     home: "Home"
     title: "Title"
     search: "Search"
+    tag_name: "Tag Name"
   notice:
     create_mission_success: "Create Mission Successfully!"
     update_success: "Update Successfully!"
