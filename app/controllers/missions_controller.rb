@@ -4,7 +4,7 @@ class MissionsController < ApplicationController
 
   def index
     @q = Mission.ransack(params[:q])
-    @missions = @q.result.where(user_id: current_user.id).order("#{order_params} desc").page(params[:page])
+    @missions = @q.result.includes(:tags).where(user_id: current_user.id).order("#{order_params} desc").page(params[:page])
   end
 
   def new

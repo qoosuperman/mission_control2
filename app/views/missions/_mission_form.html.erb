@@ -27,12 +27,12 @@
       <%= f.date_select :end_time %>
       <%= f.time_select :end_time, :ignore_date => true %>
     </div>
-    <h3>標籤選擇</h3>
+    <h3> <%= t("missions.tag") %> </h3>
     <%= f.fields_for :tags do |tag| %>
       <%= render "tag_fields", f: tag %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association "新增標籤", f, :tags, class: "btn btn-primary btn-sm" %>
+      <%= link_to_add_association t("missions.create_tag"), f, :tags, class: "btn btn-primary btn-sm" %>
     </div>
     <%= f.submit t("missions.submit"), data: { disable_with: false }, class: "btn btn-danger" %>
   </div>
