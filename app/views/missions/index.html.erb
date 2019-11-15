@@ -10,6 +10,11 @@
       <li class="nav-item active">
         <%= link_to t("user.log_out"), signout_path, class: "nav-link", method: "delete" %>
       </li>
+      <% if current_user.role == "admin" %>
+        <li class="nav-item active">
+          <%= link_to t("user.user_control"), admin_path, class: "nav-link" %>
+        </li>
+      <% end %>
     </ul>
       <%= search_form_for @q, html: { class: "form-inline my-2 my-lg-0"} do |f| %>
         <%= f.label :title_cont, t("missions.title") %>

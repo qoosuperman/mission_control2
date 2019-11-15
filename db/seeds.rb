@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-u1 = User.create(name: "QOO1", email: "qqq@gmail.com", password: "123456", password_confirmation: "123456")
+u1 = User.create(name: "QOO1", email: "qqq@gmail.com", password: "123456", password_confirmation: "123456", role: "admin")
 u2 = User.create(name: "QOO2", email: "www@gmail.com", password: "123456", password_confirmation: "123456")
 
 FactoryBot.create(:mission, title: "q1_1", user_id: u1.id)

@@ -1,0 +1,31 @@
+<h1><%= t("user.user_list") %></h1>
+<%= link_to t("user.create_user"), signup_path, class: "btn btn-success" %>
+<%= link_to t("user.back_to_missions"), root_path, class: "btn btn-success" %>
+<table class="table">
+  <thead>
+    <tr>
+      <td> <%= t("user.name") %> </td>
+      <td> <%= t("user.email") %> </td>
+      <td> <%= t("user.role") %> </td>
+      <td> <%= t("user.mission_count") %> </td>
+      <td> <%= t("missions.action") %> </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td> <%= user.name %> </td>
+        <td> <%= user.email %> </td>
+        <td> <%= user.role %> </td>
+        <td> <%= link_to user.missions.count, mission_user_path(id: user.id) %>  </td>
+        <td>
+          <%= link_to t("missions.edit"), edit_user_path(id: user.id), class: "btn btn-success" %> 
+          <%= link_to t("missions.delete"), user_path(id: user.id), method: "delete", data: { confirm: t("missions.confirm_delete") }, class: "btn btn-danger" %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+
+
+</table>
