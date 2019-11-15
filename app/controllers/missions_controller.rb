@@ -46,7 +46,7 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:title, :priority, :category, :start_time, :end_time, :user_id)
+    params.require(:mission).permit(:title, :priority, :category, :start_time, :end_time, :user_id, tags_attributes: [:id, :name, :_destroy])
   end
 
   def order_params

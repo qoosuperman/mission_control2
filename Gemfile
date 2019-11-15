@@ -43,6 +43,8 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap4-kaminari-views'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
+gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

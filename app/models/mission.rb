@@ -4,6 +4,7 @@ class Mission < ApplicationRecord
   include AASM
   belongs_to :user
   has_many :tags
+  accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
 
   enum priority: [ :urgent, :common, :low ]
   enum category: [ :company, :home ]
