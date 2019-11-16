@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_033748) do
+ActiveRecord::Schema.define(version: 2019_11_16_022931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mission_tag_logs", force: :cascade do |t|
+    t.bigint "mission_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_id"], name: "index_mission_tag_logs_on_mission_id"
+    t.index ["tag_id"], name: "index_mission_tag_logs_on_tag_id"
+  end
 
   create_table "missions", force: :cascade do |t|
     t.string "title"
@@ -33,10 +42,10 @@ ActiveRecord::Schema.define(version: 2019_11_15_033748) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.bigint "mission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mission_id"], name: "index_tags_on_mission_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +60,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_033748) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "mission_tag_logs", "missions"
+  add_foreign_key "mission_tag_logs", "tags"
   add_foreign_key "missions", "users"
-  add_foreign_key "tags", "missions"
+  add_foreign_key "tags", "users"
 end
