@@ -15,8 +15,9 @@ class MissionsController < ApplicationController
   end
 
   def create
+    @mission = current_user.missions.new # 先new出來，user_id才會出來
+    @mission.attributes = mission_params
     byebug
-    @mission = current_user.missions.build(mission_and_tag_params)
     if @mission.save
       redirect_to root_path, notice: t("notice.create_mission_success")
     else
@@ -60,9 +61,8 @@ class MissionsController < ApplicationController
         if v["name"] == ""  # 如果名字是空白不增加
         else
           hash[1] =  hash[1].merge('user_id' => current_user.id)
-
           exist_tag = current_user.tags.find_by(name: v["name"])
-          hash[1] =  hash[1].merge('id' => exist_tag.id)if exist_tag 
+          hash[1] =  hash[1].merge('id' => exist_tag.id)if exist_tag
 
           rs = rs.merge(hash[0] => hash[1])
         end
@@ -78,7 +78,7 @@ class MissionsController < ApplicationController
       params[:order_by]
     else
       "created_at"
-    end 
+    end
   end
 
   def check_login
