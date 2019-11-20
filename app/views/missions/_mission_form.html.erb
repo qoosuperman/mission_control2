@@ -29,11 +29,13 @@
     </div>
     <h3> <%= t("missions.tag") %> </h3>
     <%= f.fields_for :tags do |tag| %>
-      <%= render "tag_fields", f: tag %>
+      <div class="row">
+        <div class="col-10">
+          <%= tag.label :name %>
+          <%= tag.text_field :name, placeholder: t("missions.tag_name") %>
+        </div>
+      </div>
     <% end %>
-    <div class="links">
-      <%= link_to_add_association t("missions.create_tag"), f, :tags, class: "btn btn-primary btn-sm" %>
-    </div>
     <%= f.submit t("missions.submit"), data: { disable_with: false }, class: "btn btn-danger" %>
   </div>
 <% end %>

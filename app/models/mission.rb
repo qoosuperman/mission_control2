@@ -3,7 +3,8 @@ class Mission < ApplicationRecord
 
   include AASM
   belongs_to :user
-  has_many :tags
+  has_many :mission_tag_logs
+  has_many :tags, through: :mission_tag_logs
   accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
 
   enum priority: [ :urgent, :common, :low ]
@@ -26,4 +27,9 @@ class Mission < ApplicationRecord
       transitions from: :handling, to: :complete
     end
   end
+
+  # def tags=
+  #   byebug
+  #   super
+  # end
 end
