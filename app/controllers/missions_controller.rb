@@ -15,8 +15,8 @@ class MissionsController < ApplicationController
   end
 
   def create
-    byebug
-    @mission = current_user.missions.build(mission_and_tag_params)
+    @mission = current_user.missions.new # 先new出來，user_id才會出來
+    @mission.attributes = mission_params
     if @mission.save
       redirect_to root_path, notice: t("notice.create_mission_success")
     else
@@ -25,6 +25,10 @@ class MissionsController < ApplicationController
   end
 
   def edit
+    # 把 tag form 補到五個
+    (5 - @mission.tags.count).times do
+      @mission.tags.build
+    end
   end
 
   def update
@@ -53,24 +57,24 @@ class MissionsController < ApplicationController
     params.require(:mission).permit(:title, :priority, :category, :start_time, :end_time, :user_id, tags_attributes: [:id, :name, :_destroy])
   end
 
-  def mission_and_tag_params
-    new_params = mission_params.tap do |mp|
-      mp[:tags_attributes] = mp[:tags_attributes].to_h.reduce({}) do |rs, hash|
-        v = hash[1] # 拿 value 值["0", {"name"=>"aaa"}]
-        if v["name"] == ""  # 如果名字是空白不增加
-        else
-          hash[1] =  hash[1].merge('user_id' => current_user.id)
+  # def mission_and_tag_params
+  #   new_params = mission_params.tap do |mp|
+  #     mp[:tags_attributes] = mp[:tags_attributes].to_h.reduce({}) do |rs, hash|
+  #       v = hash[1] # 拿 value 值["0", {"name"=>"aaa"}]
+  #       if v["name"] == ""  # 如果名字是空白不增加
+  #       else
+  #         hash[1] =  hash[1].merge('user_id' => current_user.id)
 
-          exist_tag = current_user.tags.find_by(name: v["name"])
-          hash[1] =  hash[1].merge('id' => exist_tag.id)if exist_tag 
+  #         exist_tag = current_user.tags.find_by(name: v["name"])
+  #         hash[1] =  hash[1].merge('id' => exist_tag.id)if exist_tag 
 
-          rs = rs.merge(hash[0] => hash[1])
-        end
-        rs
-      end
-    end
-    new_params
-  end
+  #         rs = rs.merge(hash[0] => hash[1])
+  #       end
+  #       rs
+  #     end
+  #   end
+  #   new_params
+  # end
 
   def order_params
     whitelist = %w[created_at end_time priority]

@@ -28,8 +28,24 @@ class Mission < ApplicationRecord
     end
   end
 
-  # def tags=
-  #   byebug
-  #   super
-  # end
+  def tags_attributes=(tags_hash)
+    # tag_ids = self.tags.ids # 原本有的tag ids
+    new_tags = []
+    
+    tags_hash.each do |_, tag_hash|
+      next if tag_hash['name'].blank? # 去除沒有tag name的
+      
+      tag = user.tags.find_by(name: tag_hash['name'])
+      if tag
+        new_tags << tag
+      elsif tag_hash['id']
+        tag_hash.delete('id')
+        new_tags << user.tags.build(tag_hash)
+      else
+        new_tags << user.tags.build(tag_hash)
+      end
+    end
+    self.tags = new_tags
+  end
+
 end
