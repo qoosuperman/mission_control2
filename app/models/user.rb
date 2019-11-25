@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :missions, :dependent => :delete_all
+  has_many :tags, :dependent => :delete_all
   has_secure_password
 
   enum role: { admin: 'admin', user: 'user' }

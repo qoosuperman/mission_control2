@@ -249,11 +249,18 @@ zh-TW:
     home: "私事"
     title: "標題"
     search: "搜尋"
+    create_tag: "新增標籤"
+    tag: "標籤"
+    tag_name: "標籤名字"
   notice:
     create_mission_success: "Create Mission Successfully!"
     update_success: "Update Successfully!"
     delete_success: "Delete Successfully!"
     delete_fail: "Can't delete"
+    404_title: "你找的網頁不存在耶"
+    404_content: "檢查看看網址有沒有錯囉"
+    500_title: "看來有什麼地方怪怪 der "
+    500_content: "如果你是系統管理者請確認 Log 找更多線索"
   user:
     personal_info: "個人資料"
     log_out: "登出"

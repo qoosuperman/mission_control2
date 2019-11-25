@@ -1,4 +1,4 @@
-<%= form_for mission do |form| %>
+<%= form_for mission do |f| %>
   <% if mission.errors.any? %>
     <% mission.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -6,27 +6,36 @@
   <% end %>
   <div class= "container">
     <div class= "form-group">
-      <%= form.label :title, t("missions.mission_name") %>
-      <%= form.text_field :title, class: "form-control" %>
+      <%= f.label :title, t("missions.mission_name") %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
     <div class= "form-group">
-      <%= form.label :priority, t("missions.priority") %>
-      <%= form.select(:priority, priority_selection, {}, {class: "form-control"}) %>
+      <%= f.label :priority, t("missions.priority") %>
+      <%= f.select(:priority, priority_selection, {}, {class: "form-control"}) %>
     </div>
     <div class= "form-group">
-      <%= form.label :category, t("missions.category") %>
-      <%= form.select(:category, category_selection, {}, {class: "form-control"}) %>
+      <%= f.label :category, t("missions.category") %>
+      <%= f.select(:category, category_selection, {}, {class: "form-control"}) %>
     </div>
     <div class= "form-group">
-      <%= form.label :start_time, t("missions.start_time") %>
-      <%= form.date_select :start_time %>
-      <%= form.time_select :start_time, :ignore_date => true, class: "form-control" %>
+      <%= f.label :start_time, t("missions.start_time") %>
+      <%= f.date_select :start_time %>
+      <%= f.time_select :start_time, :ignore_date => true, class: "form-control" %>
     </div>
     <div class= "form-group">
-      <%= form.label :end_time, t("missions.end_time") %>
-      <%= form.date_select :end_time %>
-      <%= form.time_select :end_time, :ignore_date => true %>
+      <%= f.label :end_time, t("missions.end_time") %>
+      <%= f.date_select :end_time %>
+      <%= f.time_select :end_time, :ignore_date => true %>
     </div>
-    <%= form.submit t("missions.submit"), data: { disable_with: false }, class: "btn btn-danger" %>
+    <h3> <%= t("missions.tag") %> </h3>
+    <%= f.fields_for :tags do |tag| %>
+      <div class="row">
+        <div class="col-10">
+          <%= tag.label :name %>
+          <%= tag.text_field :name, placeholder: t("missions.tag_name") %>
+        </div>
+      </div>
+    <% end %>
+    <%= f.submit t("missions.submit"), data: { disable_with: false }, class: "btn btn-danger" %>
   </div>
 <% end %>

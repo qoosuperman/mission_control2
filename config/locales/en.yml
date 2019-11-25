@@ -249,11 +249,16 @@ en:
     home: "Home"
     title: "Title"
     search: "Search"
+    tag_name: "Tag Name"
   notice:
     create_mission_success: "Create Mission Successfully!"
     update_success: "Update Successfully!"
     delete_success: "Delete Successfully!"
     delete_fail: "Can't delete"
+    404_title: "The page you were looking for doesn't exist."
+    404_content: "You may have mistyped the address or the page may have moved."
+    500_title: "We're sorry, but something went wrong."
+    500_content: "If you are the application owner check the logs for more information."
   user:
     personal_info: "Peronsal Info"
     log_out: "Log Out"

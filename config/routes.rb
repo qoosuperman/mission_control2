@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   match '/signup',  to: 'users#new', via: :get
   match '/signin',  to: 'sessions#new', via: :get
   match '/signout', to: 'sessions#destroy', via: :delete
+
+  %w( 404 422 500 503 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
 end
