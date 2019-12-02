@@ -1,6 +1,9 @@
 class Mission < ApplicationRecord
   paginates_per 25
 
+  scope :overdue, -> { where("end_time < ?", Time.now) }
+  # scope :urgent, -> { where("end_time > ? and end_time < ?", Time.now, Time.now + 12.hours) }
+
   include AASM
   belongs_to :user
   has_many :mission_tag_logs
