@@ -93,7 +93,6 @@ class MissionsController < ApplicationController
   def mission_remind
     @overdue_missions = current_user.missions.overdue.map{ |mission| mission.title }.join(",")
     flash[:overdue] = "#{@overdue_missions} is overdue!"  if !@overdue_missions.blank?
-    # @urgent_missions = (current_user.missions.urgent - current_user.missions.overdue).map{ |mission| mission.title }.join(",")
     @urgent_missions = current_user.missions.where("end_time > ? and end_time < ?", Time.now, Time.now + 12.hours).map{ |mission| mission.title }.join(",")
     flash[:urgent] = "#{@urgent_missions} is urgent!"  if !@urgent_missions.blank?
   end
