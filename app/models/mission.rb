@@ -2,7 +2,7 @@ class Mission < ApplicationRecord
   paginates_per 25
 
   scope :overdue, -> { where("end_time < ?", Time.now) }
-  # scope :urgent, -> { where("end_time > ? and end_time < ?", Time.now, Time.now + 12.hours) }
+  scope :close_to_due, -> { where("end_time > ? and end_time < ?", Time.now, Time.now + 12.hours) }
 
   include AASM
   belongs_to :user
