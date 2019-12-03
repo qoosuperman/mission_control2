@@ -3,8 +3,10 @@ class User < ApplicationRecord
   has_many :tags, :dependent => :delete_all
   has_secure_password
 
+  # 為了可以使用 current_user.role / User.roles.values / current_user.admin? 這些方法 改成 enum
   enum role: { admin: 'admin', user: 'user' }
 
+  # 用在使用者更新資料的時候設定為 true，否則要一直 key 密碼很麻煩
   attr_accessor :skip_password_validation
 
   before_save { |user| user.email = email.downcase }
@@ -17,8 +19,6 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, unless: :skip_password_validation
   validates :password_confirmation, presence: true, unless: :skip_password_validation
 
-   # This line for peventing mass assignment
-  # attr_accessor :name, :email
   private
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64

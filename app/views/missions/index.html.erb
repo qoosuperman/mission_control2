@@ -1,4 +1,5 @@
-
+<%= flash[:overdue] %>
+<%= flash[:urgent] %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 
@@ -58,8 +59,8 @@
       <tr>
         <td> <%= mission.title %> </td>
         <td> <%= mission_status(mission) %> </td>
-        <td> <%= mission.start_time %> </td>
-        <td> <%= mission.end_time %> </td>
+        <td> <%= mission.start_time.strftime("%m-%d %H:%M") %> </td>
+        <td> <%= mission.end_time.strftime("%m-%d %H:%M") %> </td>
         <td> <%= mission_enum_name(mission, :priority) %> </td>
         <td> <%= mission_enum_name(mission, :category)  %> </td>
         <td> 

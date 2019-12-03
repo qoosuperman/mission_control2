@@ -1,6 +1,7 @@
 class MissionsController < ApplicationController
   before_action :find_mission, only: [:edit, :update, :destroy]
   before_action :check_login
+  before_action :mission_remind, only: [:index]
 
   def index
     @q = Mission.ransack(params[:q])
@@ -87,5 +88,12 @@ class MissionsController < ApplicationController
 
   def check_login
     redirect_to signin_path unless signed_in?
+  end
+
+  def mission_remind
+    @overdue_missions = current_user.missions.overdue.pluck('title').join(",")
+    flash[:overdue] = "#{@overdue_missions} is overdue!"  if !@overdue_missions.blank?
+    @urgent_missions = current_user.missions.close_to_due.pluck('title').join(",")
+    flash[:urgent] = "#{@urgent_missions} is urgent!"  if !@urgent_missions.blank?
   end
 end

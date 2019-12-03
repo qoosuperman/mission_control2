@@ -80,10 +80,12 @@ RSpec.feature "Missions", type: :feature do
       fill_in "q_title_cont", with: "M"
       fill_in "q_status_cont", with: "pen"
       click_button "搜尋"
-      expect(page).to have_content("M2")
-      expect(page).to have_content("M1")
-      expect(page).not_to have_content("G3")
-      expect(page).not_to have_content("M4")
+      within '.table' do
+        expect(page).to have_content("M2")
+        expect(page).to have_content("M1")
+        expect(page).not_to have_content("G3")
+        expect(page).not_to have_content("M4")
+      end
     end
   end
 
